@@ -183,7 +183,9 @@ class Tooltip extends Component {
     }
     if (!this.props.disabled) {
       this.tooltipDOM.setAttribute('title', this.props.title);
+      const appendTo = this.props.appendTo ? (this.props.appendTo === 'parent' ? this.tooltipDOM.parentNode : this.props.appendTo) : document.body;
       this.tippy = tippy(this.tooltipDOM, {
+        appendTo,
         disabled: this.props.disabled,
         position: this.props.position,
         animation: this.props.animation,
